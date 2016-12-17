@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1Fh-n9-F78">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1Fh-n9-F78">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,17 +17,57 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BGX-x3-uni">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKO-1x-Sah">
+                                <rect key="frame" x="20" y="550" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="SjM-vq-0um"/>
+                                    <constraint firstAttribute="height" constant="30" id="o6h-34-zui"/>
+                                </constraints>
+                                <state key="normal" title="add">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YT2-3M-zsA">
+                                <rect key="frame" x="534" y="550" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="H0z-pp-HPC"/>
+                                    <constraint firstAttribute="height" constant="30" id="obV-aW-RY8"/>
+                                </constraints>
+                                <state key="normal" title="Data">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YT2-3M-zsA" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="5Hd-bT-bED"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NKO-1x-Sah" secondAttribute="bottom" constant="20" id="Jpt-AC-dBJ"/>
+                            <constraint firstItem="NKO-1x-Sah" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Nf3-kL-sei"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BGX-x3-uni" secondAttribute="bottom" id="a9x-WV-gGp"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="YT2-3M-zsA" secondAttribute="bottom" constant="20" id="f0j-Qf-6E4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BGX-x3-uni" secondAttribute="trailing" constant="-20" id="feT-ln-Jqb"/>
+                            <constraint firstItem="BGX-x3-uni" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="hyA-Q6-ySf"/>
+                            <constraint firstItem="BGX-x3-uni" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="v7w-Sp-oCd"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tUH-ZE-C8R"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="337" y="429"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uzR-1I-NV2">
             <objects>
-                <navigationController id="1Fh-n9-F78" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="1Fh-n9-F78" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Whs-9s-Adv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -37,7 +78,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4uD-HE-CXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-555" y="136"/>
+            <point key="canvasLocation" x="-415" y="429"/>
         </scene>
     </scenes>
 </document>
