@@ -10,10 +10,12 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate{
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
 
     //MARK: Member Variables
-    var enableLocation: Bool!
+    
+    //位置情報有効フラグを下げておく
+    var enableLocation = false
     
     var locationLongitude: CLLocationDegrees!
     var locationLatitude : CLLocationDegrees!
@@ -35,10 +37,39 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         self.locationManager.distanceFilter = 5
         //App使用中のみの位置情報取得をユーザに確認
         self.locationManager.requestWhenInUseAuthorization()
-        //位置情報有効フラグを下げておく
-        self.enableLocation = false
-        
+        //座標の取得を開始する。
         self.locationManager.startUpdatingLocation()
+        
+        // 地図の機能を有効化
+        self.mapView.delegate = self;
+        self.mapView.userTrackingMode = MKUserTrackingMode.Follow;
+        
+        //位置情報の取得開始
+        self.locationManager.startUpdatingLocation()
+        //以下、追記分
+        //MapViewの各種の設定
+        self.mapView.delegate = self
+        self.mapView.userTrackingMode = MKUserTrackingMode.Follow
+        //追記ここまで
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (self.enableLocation) {
+            //地図の中心位置に現在地を指定
+            var co = CLLocationCoordinate2D()
+            co.latitude = self.locationLatitude
+            co.longitude = self.locationLongitude
+            self.mapView.centerCoordinate = co
+            
+            //表示縮尺の設定
+            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            let region = MKCoordinateRegion(center: co, span: span)
+            self.mapView.setRegion(region, animated: true)
+        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
