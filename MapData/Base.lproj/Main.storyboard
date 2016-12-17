@@ -58,6 +58,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="tUH-ZE-C8R"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="BGX-x3-uni" id="F60-wA-C90"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
